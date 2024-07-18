@@ -58,6 +58,9 @@ parser.add_argument(
 )
 parser.add_argument('--progress', action = 'store_true', help = 'Prints progress information')
 
+parser.add_argument('--format', nargs = 1, type = str,  help = 'Image output format png, jpg, etc.')
+
+
 args = parser.parse_args()
 k = Kumiko(
 	{
@@ -153,4 +156,4 @@ if args.browser:
 
 # Save panels to separate image files
 if args.save_panels:
-	k.save_panels(args.save_panels)
+	k.save_panels(args.save_panels, args.format[0] if args.format else "jpg")
